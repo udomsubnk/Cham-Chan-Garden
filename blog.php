@@ -61,7 +61,7 @@
 						by Banana Garden. With Fried
 						will try it to get high.</h6>
 						<h4>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Kuay Hom Tod',80)">Buy</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Kuay Hom Tod',80,'2.jpg')">Buy</button>
                         <h4>
 						<p>80฿</p>
                     </h3>
@@ -74,7 +74,7 @@
 						by Durain Selected. With Fried
 						will be fun.</h6>
 						<h4>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Durain Tod',100)">Buy</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Durain Tod',100,'1.jpg')">Buy</button>
                         <h4>
 						<p>100฿</p>
                     </h3>
@@ -86,7 +86,7 @@
 						<h6>This thing of Chantaburi 
 						Homemade cracker.</h6>						
 						<h4>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Tua Cracker',60)">Buy</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#buy" onclick="buy('Tua Cracker',60,'3.jpg')">Buy</button>
                         <h4>
 						<p>60฿</p>
                     </h3>
@@ -147,12 +147,14 @@
     <script>
         var productName = ""
         var productPrice = ""
-        function buy(name,price){
+        var productPicture = ""
+        function buy(name,price,picture){
             $('#name').text(name)
             $('#quantity').val("1")
             $('#total').text(price)
             productName = name;
             productPrice = price;
+            productPicture = picture;
         }
         function addToCart(){
             url=window.location.href;
@@ -163,13 +165,14 @@
             data = {
                 name:productName,
                 price:productPrice+"",
-                quantity:$('#quantity').val() 
+                quantity:$('#quantity').val(),
+                picture:productPicture
             }
             console.log(data);
             $.post(addtocartURL, data, function(data, textStatus, xhr) {
                 if(data=="success"){
                     $('#alert').toggleClass('hide')
-                    setTimeout(function(){ $('#alert').toggleClass('hide') }, 4000);
+                    window.location = "cart.php"
                 }else {
                     alert("กรุณาเข้าสู่ระบบก่อน")
                     window.location = url+"/login.php"

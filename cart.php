@@ -61,7 +61,20 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
         <div class="row">
             <div class="box">
-              
+                <center><h4>ตะกร้าสินค้าของ <?php echo $_SESSION["email"];?></h4></center>
+                <?php 
+                    if(count($_SESSION['item']['name'])==0){
+                        echo "<center><h5 style='color:red'>คุณไม่มีสินค้าใดๆในตะกร้า</h5></center>";
+                    }else{
+                        for($i=0;$i<count($_SESSION['item']['name']);$i++){
+                            echo "<img width='100px' src='img/".$_SESSION['item']['picture'][$i]."'></img>";
+                            echo "<br>ชื่อสินค้า : ".$_SESSION['item']['name'][$i];
+                            echo "<br>ราคาต่อชิ้น : ".$_SESSION['item']['price'][$i];
+                            echo "<br>จำนวน : ".$_SESSION['item']['quantity'][$i];
+                            echo "<br><br>";
+                        }
+                    }
+                 ?>
             </div>
         </div>
 

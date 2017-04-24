@@ -5,6 +5,12 @@
 		$loginEmail = $_POST["login-email"];
 		$loginPassword = md5($_POST["login-password"]);
 		if(checkEmail($loginEmail,$loginPassword)){
+			$_SESSION['item']= array(
+                    "name" => array(),
+                    "price" => array(),
+                    "quantity" => array(),
+                    "picture" => array()      
+            );
 			header( "location: cart.php" );
 	        exit(0);
 		}else{
