@@ -33,7 +33,11 @@
                 <?php 
                     if(isset($_SESSION["email"])) 
                         echo '<li><a href="cart.php"><img src="img/cart.png" width="30px;" alt="ตะกร้าสินค้า"></a></li>';
-                    else echo '<li><a href="login.php">Login</a></li>';
+                    else {
+                        echo '<li><a href="login.php">Login</a></li>';
+                        echo '<li><a href="logout.php">Logout</a></li>';
+
+                    }
                 ?>
             </ul>
         </div>

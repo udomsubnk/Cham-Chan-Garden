@@ -5,9 +5,7 @@
   License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php 
-    $host = "localhost";
-    $user = "root";
-    $password = "";
+    include "config.php";
     checkJamesDB($host,$user,$password);
 
 
@@ -116,7 +114,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     <div class="panel-body">
                       <div class="row">
                         <div class="col-lg-12">
-                          <form id="login-form" action="login.php" method="post" role="form" style="display: block;">
+                          <form id="login-form" action="authen.php" method="post" role="form" style="display: block;">
                             <div class="form-group">
                               <input type="text" name="login-email" id="email" tabindex="1" class="form-control" placeholder="email" value="">
                             </div>
@@ -144,20 +142,20 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                               </div>
                             </div>
                           </form>
-                          <form id="register-form" action="login.php" method="post" role="form" style="display: none;">
+                          <form id="register-form" action="authen.php" method="post" role="form" style="display: none;">
                             <div class="form-group">
-                              <input type="email" name="regis-email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                              <input type="email" name="regis-email" id="regis-email" tabindex="1" class="form-control" placeholder="Email Address" value="">
                             </div>
                             <div class="form-group">
-                              <input type="password" name="regis-password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                              <input type="password" name="regis-password" id="regis-password" tabindex="2" class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group">
-                              <input type="password" name="regis-confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                              <input type="password" name="regis-confirm-password" id="regis-confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
                             </div>
                             <div class="form-group">
                               <div class="row">
                                 <div class="col-sm-6 col-sm-offset-3">
-                                  <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                  <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" id="regisbtn" value="Register Now">
                                 </div>
                               </div>
                             </div>
