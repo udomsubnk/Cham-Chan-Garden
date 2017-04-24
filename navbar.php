@@ -31,12 +31,12 @@
 				<a href="contact.php">Contact</a>
 				</li>
                 <?php 
-                    if(isset($_SESSION["email"])) 
+                    if(isset($_SESSION["email"])) {
                         echo '<li><a href="cart.php"><img src="img/cart.png" width="30px;" alt="ตะกร้าสินค้า"></a></li>';
+                        echo '<li><a href="logout.php">Logout</a></li>';
+                    }
                     else {
                         echo '<li><a href="login.php">Login</a></li>';
-                        echo '<li><a href="logout.php">Logout</a></li>';
-
                     }
                 ?>
             </ul>
