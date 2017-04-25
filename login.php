@@ -6,12 +6,6 @@
 -->
 <?php 
     include "config.php";
-    session_start();
-    if(isset($_SESSION["email"])){
-      header( "location: cart.php" );
-      exit(0);
-      return;
-    }
     checkJamesDB($host,$user,$password);
 
 
@@ -98,6 +92,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
     <!-- Navigation -->
     <?php include "navbar.php"; ?>
+    <?php 
+      if(isset($_SESSION["email"])){
+        header( "location: cart.php" );
+        exit(0);
+        return;
+      }
+     ?>
     <div class="container">
 
       <div class="row">
