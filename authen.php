@@ -19,9 +19,9 @@
 	}else if(isset($_POST["regis-email"])){
 		//register
 		$regisEmail = $_POST["regis-email"];
-		$regisPassword = md5($_POST["regis-email"]);
+		$regisPassword = md5($_POST["regis-password"]);
 		$regisPassword2 = md5($_POST["regis-confirm-password"]);
-		if($regisPassword!=$regisPassword){
+		if($regisPassword!=$regisPassword2){
 			echo "กรุณากรอก password ให้สอดคล้องกัน";
 		}
 		else{
@@ -29,6 +29,14 @@
 				echo "ขออภัย email นี้มีอยู่แล้วในระบบ";
 			}else{
 				register($regisEmail,$regisPassword);
+				$_SESSION['item']= array(
+	                    "name" => array(),
+	                    "price" => array(),
+	                    "quantity" => array(),
+	                    "picture" => array()      
+	            );
+	            header( "location: cart.php" );
+		        exit(0);
 			}
 		}
 	}
@@ -37,6 +45,7 @@
 		include "config.php";
 		$conn = new mysqli($host, $user, $password, "james");
 		$sql = "select * from members where email = '".$loginEmail."' and password ='".$loginPassword."'";
+		echo $sql;
       	$result = $conn->query($sql);
       	$conn->close();
       	if($result->num_rows == 1){
