@@ -43,7 +43,7 @@
 
 	function checkEmail($loginEmail,$loginPassword){
 		include "config.php";
-		$conn = new mysqli($host, $user, $password, "james");
+		$conn = new mysqli($host, $user, $password, $databaseName);
 		$sql = "select * from members where email = '".$loginEmail."' and password ='".$loginPassword."'";
 		echo $sql;
       	$result = $conn->query($sql);
@@ -58,7 +58,7 @@
 	}
 	function ismember($loginEmail){
 		include "config.php";
-		$conn = new mysqli($host, $user, $password, "james");
+		$conn = new mysqli($host, $user, $password, $databaseName);
 		$sql = "select * from members where email = '".$loginEmail."'";
       	$result = $conn->query($sql);
       	$conn->close();
@@ -72,7 +72,7 @@
 	}
 	function register($regisEmail,$regisPassword){
 		include "config.php";
-		$conn = new mysqli($host, $user, $password, "james");
+		$conn = new mysqli($host, $user, $password, $databaseName);
 		$sql = "insert into members values('','".$regisEmail."','".$regisPassword."')";
       	$result = $conn->query($sql);
       	$conn->close();
