@@ -11,26 +11,31 @@
 
 
   function checkJamesDB($host,$user,$password){
+    include "config.php";
     $link = mysql_connect($host, $user, $password);
     $db_list = mysql_list_dbs($link);
     //เช็ค DB 
-    // $i = 0;
-    // $cnt = mysql_num_rows($db_list);
-    // while ($i < $cnt) {
-        // if(mysql_db_name($db_list, $i)=="james"){
-          // return;
-        // }
-        // $i++;
-    // }
+    $i = 0;
+    $cnt = mysql_num_rows($db_list);
+    while ($i < $cnt) {
+      echo mysql_db_name($db_list, $i).":".$databaseName."<br>";
+        if(mysql_db_name($db_list, $i)==$databaseName){
+          echo "Found!! ";
+          break;
+        }
+        $i++;
+    }
     // $sql = "CREATE DATABASE james";
     // $result = mysql_query($sql);
     // if ($result) {
       // echo "success";
-      mysql_select_db($databaseName, $link);
-      $sql = "CREATE TABLE members (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,email VARCHAR(30) NOT NULL,password VARCHAR(40) NOT NULL)";
+      mysql_select_db($databaseName, $link) or die('Could not select database.');
+      $sql = "CREATE TABLE members (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,email VARCHAR(30) NOT NULL,password VARCHAR(40) NOT NULL);";
       $result = mysql_query($sql);
       if ($result) {
           echo "success";
+      }else{
+          echo "fail";
       }
     // }
     mysql_close($link);

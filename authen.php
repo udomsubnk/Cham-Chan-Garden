@@ -45,7 +45,6 @@
 		include "config.php";
 		$conn = new mysqli($host, $user, $password, $databaseName);
 		$sql = "select * from members where email = '".$loginEmail."' and password ='".$loginPassword."'";
-		echo $sql;
       	$result = $conn->query($sql);
       	$conn->close();
       	if($result->num_rows == 1){

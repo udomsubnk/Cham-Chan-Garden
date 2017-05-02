@@ -1,5 +1,5 @@
 <?php 
-	$host = "hosting.dusit.ac.th";
+	$host = "localhost";
     $user = "5711011802089";
     $password = "bizcom";
 
